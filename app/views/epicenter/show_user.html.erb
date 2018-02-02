@@ -1,0 +1,34 @@
+<h1>@<%= @user.username %>'s Profile & Warbles</h1>
+
+<div>
+<%= @user.name %><br />
+<%= @user.location %><br />
+<%= @user.bio %>
+</div>
+
+<p>
+<ul class="nav nav-tabs">
+    <li role="presentation">
+    <%= link_to following_path(id: @user.id) do %>
+      Following &nbsp;  <span class='badge'><%= @following.count %> </span>
+        <% end %>
+    </li>
+    <li role="presentation">
+    <%= link_to followers_path(id: @user.id) do %>
+    Followers &nbsp;<span class='badge'><%= @followers.count %></span>
+    <% end %>
+    </li>
+  
+    </ul
+    <% if current_user.following.include?(@user.id) %>
+        <%= link_to "Following", unfollow_path(id: @user.id), class: "btn btn-primary unfollow-btn" %>
+    <% else %>
+        <% if current_user.id != @user.id %>
+	    <%= link_to 'Following', now_following_path(id: @user.id), class: "btn btn-success" %>
+      
+	<% end %>
+    <% end %>
+</p>
+<div>
+
+<%= render @user.tweets %>

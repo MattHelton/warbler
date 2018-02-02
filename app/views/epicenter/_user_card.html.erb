@@ -1,0 +1,24 @@
+<div class="col-sm-4">
+    <div class="panel panel-info">
+        
+        <div class="panel-heading">
+        <%= link_to show_user_path(id: user.id) do %>
+            <%= user.name %>
+            <i class="glyphicon glyphicon-user"></i>
+            @<%= user.username %>
+             <% end %>
+            <% if current_user.following.include? user.id %>
+                <%= link_to "Following", unfollow_path(id: user.id), class: "btn btn-primary unfollow-btn" %>
+            <% else %>
+                <%= link_to 'Follow', now_following_path(id: user.id), class: 'btn btn-success' %>
+            <% end %>
+        </div>
+        
+        <div class="panel-body">
+            <b>Location: <%= user.location %></b>
+            <p>
+            <b>Bio:</b><br />
+            <%= user.bio %>
+        </div>
+    </div>
+</div>

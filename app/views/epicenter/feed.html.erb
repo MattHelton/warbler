@@ -1,0 +1,16 @@
+<h1>@<%= current_user.username %>'s Warbler Feed</h1>
+<p>Here is what your friends are saying:</p>
+<div class="row">
+    <div class="col-sm-10">
+        <%= render @following_tweets %>
+    </div>
+    <div class="col-sm-2"
+        <div id="user-info">
+            <ul>
+                <li><%= current_user.tweets.count %> Tweets</li>
+                <li>Following <%= @following.count %></li>
+                <li>Followers <%= @followers.count %></li>
+
+        </div>
+    </div>
+</div>

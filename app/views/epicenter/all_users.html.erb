@@ -1,0 +1,7 @@
+<h1>All Warbler Users</h1>
+
+<div class="row">
+    <% @users.each do |user| %>
+        <%= render 'user_card', user: user %>
+    <% end %>
+</div>

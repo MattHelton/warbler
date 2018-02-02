@@ -1,0 +1,14 @@
+<div class= "panel panel-default">
+    <div class= "panel-heading">
+        <%= link_to "@#{tweet.user.username}", show_user_path(id: tweet.user_id) %>
+        <i class= "glyphicon glyphicon-time"></i>  
+        <% if tweet.created_at < 1.day.ago %>
+            <%= tweet.created_at.strftime('%b %e') %>
+        <%else%>
+            <%= time_ago_in_words tweet.created_at %>
+        <% end %>
+            <div class="panel-body">
+                        <%= tweet.message.html_safe %>
+                </div>
+            </div>
+</div>
